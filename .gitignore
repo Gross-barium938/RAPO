@@ -1,0 +1,26 @@
+LLaMA-Factory/arpo_train_sft/dataset/*.jsonl
+LLaMA-Factory/arpo_train_sft/dataset/*.jsonl
+LLaMA-Factory/LLaMA-Factory-backup
+# python
+__pycache__/
+*.pyc
+
+# env
+.env
+.venv
+conda-env/
+
+# training
+checkpoints/
+outputs/
+logs/
+wandb/
+
+# data
+data/
+datasets/
+wiki/
+*.faiss
+
+# OS
+.DS_Store
