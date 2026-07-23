@@ -65,6 +65,8 @@ shaping_weight=0.05
 advantage_weight=0.2
 # ============================ Rollout Tools Configuration ==========================
 SEARCH_CACHE_PATH="${PATH_TO_ARPO}/search_cache/search_cache.json" # Modify
+SEARCH_CLASS_PATH="verl.workers.rollout.tools.wiki_search_tool.WikiSearchTool"
+ENABLE_MULTI_TURN=False
 
 # ============================ Reward Model Configuration ==========================
 # Reward model settings
