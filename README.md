@@ -169,9 +169,6 @@ Important training knobs are exposed in `RAPO/scripts/RAPO_7B_Reasoning.sh`:
 
 ```bash
 ROLLOUT_N=16
-INITIAL_ROLLOUTS=16
-BEAM_SIZE=2
-BRANCH_PROBABILITY=0.5
 no_retrieve_first_k=8
 retrieve_prob=0.5
 shaping_weight=0.05
